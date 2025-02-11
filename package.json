@@ -6,7 +6,6 @@
     "cra-template": "1.2.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-flip-toolkit": "^7.2.4",
     "react-pageflip": "^2.0.3",
     "react-scripts": "5.0.1",
     "styled-components": "^6.1.15",
