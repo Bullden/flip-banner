@@ -14,13 +14,13 @@ const Banner = () => {
   const handlePlayStop = () => {
     setIsPlaying(!isPlaying)
   }
+  const correctPage = isMobile ? page : page + 1
 
   useEffect(() => {
     // Manage AutoPlay
 
     let intervalId
     if (isPlaying) {
-      const correctPage = isMobile ? page : page - 1
       intervalId = setInterval(() => {
         if (autoDirection === 'forward') {
           if (correctPage < pages.length - 1) {
@@ -68,12 +68,17 @@ const Banner = () => {
 
   return (
     <StyledContainer onClick={handleBannerClick}>
+      <h2>Product Showcase</h2>
       <PageFlip pages={pages} flipRef={flipRef} handlePageChange={handlePageChange} setIsMobile={setIsMobile} />
       <Indicators pages={pages} page={page} isMobile={isMobile} flipRef={flipRef} />
 
       <StyledButtonWrap>
-        <StyledButton onClick={handlePrevPage}>Prev</StyledButton>
-        <StyledButton onClick={handleNextPage}>Next</StyledButton>
+        <StyledButton onClick={handlePrevPage} disabled={page === 0}>
+          Prev
+        </StyledButton>
+        <StyledButton onClick={handleNextPage} disabled={correctPage === pages.length - 1}>
+          Next
+        </StyledButton>
       </StyledButtonWrap>
 
       <StyledButton onClick={handlePlayStop}>{isPlaying ? 'Stop' : 'Play'}</StyledButton>

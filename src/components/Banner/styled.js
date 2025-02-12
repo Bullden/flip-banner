@@ -41,4 +41,17 @@ export const StyledButton = styled.div`
   &:focus {
     outline: none;
   }
+
+  ${({ disabled }) =>
+    disabled &&
+    `
+    opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(80%);
+
+  &:hover, &:active 
+    filter: grayscale(80%);
+    transform: none;
+  }
+      `}
 `
